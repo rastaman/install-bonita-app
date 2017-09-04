@@ -1,0 +1,15 @@
+---
+# Usage:
+# $ ansible-playbook books/install_app.yml -e @myapp.yml
+- hosts: localhost
+  roles:
+  - "ansible-bonita-provisioning"
+
+- hosts: localhost
+  # All vars comes from the var file
+  tasks:
+  - name: Login to Bonita
+    bonita:
+      action: login
+      url: "{{ bonita_url }}"
+      

@@ -107,3 +107,6 @@ roles/
 # Eclipse descriptors
 .project
 .pydevproject
+
+# Project specific vars file
+myapp.yml
