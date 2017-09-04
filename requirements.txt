@@ -1,0 +1,4 @@
+# We believe you have ansible==2.3.2 installed
+#git+https://github.com/tangentlabs/django-oscar-paypal.git@issue/34/oscar-0.6
+https://github.com/rastaman/bonita-cli/archive/master.zip
+requests

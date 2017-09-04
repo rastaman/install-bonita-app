@@ -1,0 +1,5 @@
+- src: git+https://github.com/rastaman/ansible-bonita-provisioning.git
+  version: master
+  name: ansible-bonita-provisioning
+
+
