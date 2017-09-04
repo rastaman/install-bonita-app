@@ -103,3 +103,7 @@ ENV/
 
 # Ansible roles
 roles/
+
+# Eclipse descriptors
+.project
+.pydevproject
