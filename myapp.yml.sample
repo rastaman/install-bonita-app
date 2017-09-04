@@ -1,2 +1,16 @@
 ---
 # Vars for deploying bonita app
+orgnizations:
+- "Organization_X.xml"
+bdms:
+- bdm_X.zip
+forms:
+- form_X.zip
+rest_extensions:
+- getX-1.0.0-SNAPSHOT.zip
+layouts:
+- layout_X.zip
+processes:
+- process_X--1.0.0.bar
+pages:
+- page_X.zip
