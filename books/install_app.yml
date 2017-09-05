@@ -28,12 +28,12 @@
     debug:
       msg: "{{ session_raw['result']['datas'] }}"
   # Let's try to upload everything apart the processes
-  # Forms - KO
+  # Forms
   - name: Upload forms
     bonita:
       args:
         upload: yes
-        "<type>": form
+        "<type>": page
         "<filename>": "{{ release_dir + '/' + item }}"
     with_items: "{{ forms }}"
     register: form_files
@@ -67,12 +67,12 @@
     debug:
       msg: "{{ organization_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ organizations }}"
-  # Layouts - KO
+  # Layouts
   - name: Upload layouts
     bonita:
       args:
         upload: yes
-        "<type>": layout
+        "<type>": page
         "<filename>": "{{ release_dir + '/' + item }}"
     with_items: "{{ layouts }}"
     register: layout_files
@@ -93,12 +93,12 @@
     debug:
       msg: "{{ bdm_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ bdms }}"
-  # Rest extensions - KO
+  # Rest extensions
   - name: Upload REST extensions
     bonita:
       args:
         upload: yes
-        "<type>": rest_extension
+        "<type>": page
         "<filename>": "{{ release_dir + '/' + item }}"
     with_items: "{{ rest_extensions }}"
     register: rest_extensions_files
