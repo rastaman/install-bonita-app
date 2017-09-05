@@ -18,6 +18,21 @@
         "<username>": "{{ bonita_credentials.login }}"
         "<password>": "{{ bonita_credentials.password }}"
       verbose: yes
+  - name: Get session
+    bonita:
+      args:
+        session: yes
+        get: yes
+    register: session_raw
+  - name: Display session
+    debug:
+      msg: "{{ session_raw['result']['datas'] }}"
+  - name: Logout
+    bonita:
+      args:
+        session: yes
+        logout: yes
+
 #  - name: Upload the processes
 #    debug:
 #      msg: "{{ processes }}"
