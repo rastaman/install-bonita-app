@@ -27,6 +27,86 @@
   - name: Display session
     debug:
       msg: "{{ session_raw['result']['datas'] }}"
+  # Let's try to upload everything apart the processes
+  # Forms - KO
+  - name: Upload forms
+    bonita:
+      args:
+        upload: yes
+        "<type>": form
+        "<filename>": "{{ release_dir + '/' + item }}"
+    with_items: "{{ forms }}"
+    register: form_files
+  - name: Debug form files
+    debug:
+      msg: "{{ form_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ forms }}"
+  # Pages
+  - name: Upload pages
+    bonita:
+      args:
+        upload: yes
+        "<type>": page
+        "<filename>": "{{ release_dir + '/' + item }}"
+    with_items: "{{ pages }}"
+    register: page_files
+  - name: Debug page files
+    debug:
+      msg: "{{ page_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ pages }}"
+  # Organization
+  - name: Upload organizations
+    bonita:
+      args:
+        upload: yes
+        "<type>": organization
+        "<filename>": "{{ release_dir + '/' + item }}"
+    with_items: "{{ organizations }}"
+    register: organization_files
+  - name: Debug organization files
+    debug:
+      msg: "{{ organization_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ organizations }}"
+  # Layouts - KO
+  - name: Upload layouts
+    bonita:
+      args:
+        upload: yes
+        "<type>": layout
+        "<filename>": "{{ release_dir + '/' + item }}"
+    with_items: "{{ layouts }}"
+    register: layout_files
+  - name: Debug layout files
+    debug:
+      msg: "{{ layout_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ layouts }}"
+  # BDM - KO
+  - name: Upload BDMs
+    bonita:
+      args:
+        upload: yes
+        "<type>": bdm
+        "<filename>": "{{ release_dir + '/' + item }}"
+    with_items: "{{ bdms }}"
+    register: bdm_files
+  - name: Debug BDM files
+    debug:
+      msg: "{{ bdm_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ bdms }}"
+  # Rest extensions - KO
+  - name: Upload REST extensions
+    bonita:
+      args:
+        upload: yes
+        "<type>": rest_extension
+        "<filename>": "{{ release_dir + '/' + item }}"
+    with_items: "{{ rest_extensions }}"
+    register: rest_extensions_files
+  - name: Debug REST extensions
+    debug:
+      msg: "{{ rest_extensions_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ rest_extensions }}"
+  # Let's try to upload the process and then deploy the main process
   - name: Debug processes
     debug:
       msg: "{{ processes }}"
@@ -43,6 +123,9 @@
       msg: "{{ server_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ processes }}"
 #  - name: Deploy the processes
+#    args:
+#      process: yes
+#      deploy: yes
 #    debug:
 #      msg: "{{ processes }}"
 #  - name: Activate the main process
