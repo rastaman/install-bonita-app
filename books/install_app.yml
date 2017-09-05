@@ -10,6 +10,16 @@
   tasks:
   - name: Login to Bonita
     bonita:
-      action: login
+      session: login
       url: "{{ bonita_url }}"
-      
+      username: "{{ bonita_credentials.login }}"
+      password: "{{ bonita_credentials.password }}"
+#  - name: Upload the processes
+#    debug:
+#      msg: "{{ processes }}"
+#  - name: Deploy the processes
+#    debug:
+#      msg: "{{ processes }}"
+#  - name: Activate the main process
+#    debug:
+#      msg: "{{ main_process }}"

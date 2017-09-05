@@ -1,6 +1,10 @@
 ---
 # Vars for deploying bonita app
-orgnizations:
+bonita_url: "http://bananas:8080/bonita"
+bonita_credentials:
+  login: username
+  password: password
+organizations:
 - "Organization_X.xml"
 bdms:
 - bdm_X.zip

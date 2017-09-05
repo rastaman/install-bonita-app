@@ -110,3 +110,4 @@ roles/
 
 # Project specific vars file
 myapp.yml
+.settings/
