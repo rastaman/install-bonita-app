@@ -27,9 +27,21 @@
   - name: Display session
     debug:
       msg: "{{ session_raw['result']['datas'] }}"
-  - name: Upload the processes
+  - name: Debug processes
     debug:
       msg: "{{ processes }}"
+  - name: Upload the processes
+    bonita:
+      args:
+        upload: yes
+        "<type>": process
+        "<filename>": "{{ item }}"
+    with_items: "{{ processes }}"
+    register: server_files
+  - name: Debug server files
+    debug:
+      msg: "{{ server_files }}"
+
 #  - name: Deploy the processes
 #    debug:
 #      msg: "{{ processes }}"
