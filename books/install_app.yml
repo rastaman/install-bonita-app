@@ -35,13 +35,13 @@
       args:
         upload: yes
         "<type>": process
-        "<filename>": "{{ item }}"
+        "<filename>": "{{ release_dir + '/' + item }}"
     with_items: "{{ processes }}"
     register: server_files
   - name: Debug server files
     debug:
-      msg: "{{ server_files }}"
-
+      msg: "{{ server_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ processes }}"
 #  - name: Deploy the processes
 #    debug:
 #      msg: "{{ processes }}"
