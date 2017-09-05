@@ -18,3 +18,5 @@ processes:
 - process_X--1.0.0.bar
 pages:
 - page_X.zip
+#If you install everything in a venv:
+#ansible_python_interpreter: "$HOME/workspaces/bpm/install-bonita-app/.venv/bin/python"

@@ -9,11 +9,15 @@
   # All vars comes from the var file
   tasks:
   - name: Login to Bonita
+    #   bonita session [login <url> <username> <password>|logout|get]
     bonita:
-      session: login
-      url: "{{ bonita_url }}"
-      username: "{{ bonita_credentials.login }}"
-      password: "{{ bonita_credentials.password }}"
+      args: 
+        session: yes
+        login: yes
+        "<url>": "{{ bonita_url }}"
+        "<username>": "{{ bonita_credentials.login }}"
+        "<password>": "{{ bonita_credentials.password }}"
+      verbose: yes
 #  - name: Upload the processes
 #    debug:
 #      msg: "{{ processes }}"
