@@ -27,18 +27,17 @@
   - name: Display session
     debug:
       msg: "{{ session_raw['result']['datas'] }}"
-  - name: Logout
-    bonita:
-      args:
-        session: yes
-        logout: yes
-
-#  - name: Upload the processes
-#    debug:
-#      msg: "{{ processes }}"
+  - name: Upload the processes
+    debug:
+      msg: "{{ processes }}"
 #  - name: Deploy the processes
 #    debug:
 #      msg: "{{ processes }}"
 #  - name: Activate the main process
 #    debug:
 #      msg: "{{ main_process }}"
+  - name: Logout
+    bonita:
+      args:
+        session: yes
+        logout: yes
