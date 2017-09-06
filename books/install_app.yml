@@ -41,6 +41,14 @@
     debug:
       msg: "{{ form_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ forms }}"
+  - name: Deploy form files
+    bonita:
+      args:
+        portal: yes
+        page: yes
+        deploy: yes
+        "<filename_on_server>": "{{ form_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ forms }}"
   # Pages
   - name: Upload pages
     bonita:
@@ -53,6 +61,14 @@
   - name: Debug page files
     debug:
       msg: "{{ page_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ pages }}"
+  - name: Deploy pages files
+    bonita:
+      args:
+        portal: yes
+        page: yes
+        deploy: yes
+        "<filename_on_server>": "{{ page_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ pages }}"
   # Organization
   - name: Upload organizations
@@ -80,6 +96,14 @@
     debug:
       msg: "{{ layout_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ layouts }}"
+  - name: Deploy layout files
+    bonita:
+      args:
+        portal: yes
+        page: yes
+        deploy: yes
+        "<filename_on_server>": "{{ layout_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ layouts }}"
   # BDM - KO
   - name: Upload BDMs
     bonita:
@@ -105,6 +129,14 @@
   - name: Debug REST extensions
     debug:
       msg: "{{ rest_extensions_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ rest_extensions }}"
+  - name: Deploy REST extensions
+    bonita:
+      args:
+        portal: yes
+        page: yes
+        deploy: yes
+        "<filename_on_server>": "{{ rest_extensions_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ rest_extensions }}"
   # Let's try to upload the process and then deploy the main process
   - name: Debug processes
