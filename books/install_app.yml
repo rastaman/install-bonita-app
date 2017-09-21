@@ -79,10 +79,12 @@
         "<filename>": "{{ release_dir + '/' + item }}"
     with_items: "{{ organizations }}"
     register: organization_files
+    tags: [organization]
   - name: Debug organization files
     debug:
       msg: "{{ organization_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ organizations }}"
+    tags: [organization]
   # Layouts
   - name: Upload layouts
     bonita:
@@ -149,20 +151,18 @@
         "<type>": process
         "<filename>": "{{ release_dir + '/' + item }}"
     with_items: "{{ processes }}"
-    register: server_files
+    register: process_files
   - name: Debug server files
     debug:
-      msg: "{{ server_files['results'][item.0]['result']['datas'] }}"
+      msg: "{{ process_files['results'][item.0]['result']['datas'] }}"
     with_indexed_items: "{{ processes }}"
-#  - name: Deploy the processes
-#    args:
-#      process: yes
-#      deploy: yes
-#    debug:
-#      msg: "{{ processes }}"
-#  - name: Activate the main process
-#    debug:
-#      msg: "{{ main_process }}"
+  - name: Deploy the processes
+    bonita:
+      args:
+        process: yes
+        deploy: yes
+        "<filename_on_server>": "{{ process_files['results'][item.0]['result']['datas'] }}"
+    with_indexed_items: "{{ processes }}"
   - name: Logout
     bonita:
       args:
